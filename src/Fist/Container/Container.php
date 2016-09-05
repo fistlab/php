@@ -11,6 +11,7 @@ use InvalidArgumentException;
 
 class Container
 {
+    protected static $instance;
     protected $bindings = [];
     protected $instances = [];
     protected $extenders = [];
@@ -18,6 +19,28 @@ class Container
     protected $rebindingListeners = [];
     protected $resolvingListeners = [];
     protected $buildStack = [];
+
+    public function __construct()
+    {
+        if (is_null(static::$instance)) {
+            static::$instance = $this;
+        }
+    }
+
+    public static function getInstance()
+    {
+        return static::$instance;
+    }
+
+    public static function setInstance(Container $container)
+    {
+        static::$instance = $container;
+    }
+
+    public static function removeInstance()
+    {
+        static::$instance = null;
+    }
 
     public function resolving($name, Closure $closure)
     {

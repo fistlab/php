@@ -12,6 +12,28 @@ class ContainerTest extends TestCase
         $this->assertInstanceOf(Container::class, $container);
     }
 
+    public function testInstancing()
+    {
+        $application = new Container();
+
+        Container::setInstance($application);
+
+        $this->assertInstanceOf(Container::class, Container::getInstance());
+        $this->assertSame($application, Container::getInstance());
+    }
+
+    public function testAutoInstancing()
+    {
+        Container::removeInstance();
+
+        $this->assertSame(null, Container::getInstance());
+
+        $application = new Container();
+
+        $this->assertInstanceOf(Container::class, Container::getInstance());
+        $this->assertSame($application, Container::getInstance());
+    }
+
     public function testBinding()
     {
         $container = new Container();
@@ -582,7 +604,6 @@ class ContainerLazyExtendTestStub
     }
 }
 
-// TODO
 class ContainerTestCallStub
 {
     public function work()
@@ -596,7 +617,6 @@ class ContainerTestCallStub
     }
 }
 
-// TODO
 class ContainerTestContextInjectOne
 {
     public $impl;
@@ -607,7 +627,6 @@ class ContainerTestContextInjectOne
     }
 }
 
-// TODO
 class ContainerTestContextInjectTwo
 {
     public $impl;
@@ -618,7 +637,6 @@ class ContainerTestContextInjectTwo
     }
 }
 
-// TODO
 class ContainerStaticMethodStub
 {
     public static function inject(ContainerTestStub $stub, $default = 'mark')
@@ -627,7 +645,6 @@ class ContainerStaticMethodStub
     }
 }
 
-// TODO
 class ContainerInjectVariableStub
 {
     public $something;
