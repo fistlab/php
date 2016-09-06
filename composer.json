@@ -15,9 +15,7 @@
     }
   ],
   "require": {
-    "php": ">=5.6.4",
-    "ext-mbstring": "*",
-    "ext-openssl": "*"
+    "php": ">=5.6.4"
   },
   "replace": {
     "fistphp/container": "self.version"
