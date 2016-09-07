@@ -17,7 +17,7 @@ split()
 
         pushd $HEAD
 
-        git subsplit init git@github.com:fistlab/php.git
+        git subsplit init https://github.com/fistlab/php.git
         git subsplit update
 
         time git subsplit publish --heads="$HEAD" --no-tags "$SPLIT"
@@ -29,4 +29,4 @@ split()
     popd
 }
 
-split container    src/Fist/Container:git@github.com:fistphp/container.git                "master"
+split container    src/Fist/Container:https://github.com/fistphp/container.git                "master"
