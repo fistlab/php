@@ -30,7 +30,8 @@ class ContainerRepository implements RepositoryInterface
     public function set($key, $value)
     {
         if ($value instanceof Closure) {
-            $this->container->singleton($this->prefix.$key, $value);
+            // I'm still unsure whether or not to use 'singleton' over 'bind' in this ase.
+            $this->container->bind($this->prefix.$key, $value);
         } else {
             $this->container->instance($this->prefix.$key, $value);
         }
