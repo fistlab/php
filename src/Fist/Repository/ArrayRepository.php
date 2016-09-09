@@ -67,7 +67,11 @@ class ArrayRepository implements RepositoryInterface
         $part = array_shift($parts);
 
         if (count($parts) == 0) {
-            $items[$part] = $value;
+            return $items[$part] = $value;
+        }
+
+        if (! isset($items[$part]) || ! is_array($items[$part])) {
+            $items[$part] = [];
         }
 
         return $this->setSeparated(
