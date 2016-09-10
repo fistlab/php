@@ -30,3 +30,4 @@ split()
 }
 
 split container    src/Fist/Container:https://github.com/fistphp/container.git                "master"
+split container    src/Fist/Repository:https://github.com/fistphp/repository.git              "master"
