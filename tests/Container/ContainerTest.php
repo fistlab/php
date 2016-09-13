@@ -479,21 +479,6 @@ class ContainerTest extends TestCase
         $this->assertInstanceOf(ContainerImplementationTestStubTwo::class, $two->impl);
     }
 
-    /*
-    public function testForgetInstanceForgetsInstance()
-    {
-        $container = new Container();
-
-        $container->instance(stdClass::class, new stdClass());
-
-        $this->assertTrue($container->isShared(stdClass::class));
-
-        $container->forgetInstance(stdClass::class);
-
-        $this->assertFalse($container->isShared(stdClass::class));
-    }
-    */
-
     public function testContainerCanInjectSimpleVariable()
     {
         $container = new Container();
@@ -518,18 +503,22 @@ class ContainerTest extends TestCase
 
 interface ContainerStubInterface
 {
+    //
 }
 
 class ContainerTestStub
 {
+    //
 }
 
 class ContainerImplementationTestStub implements ContainerStubInterface
 {
+    //
 }
 
 class ContainerImplementationTestStubTwo implements ContainerStubInterface
 {
+    //
 }
 
 class ContainerDependentTestStub
