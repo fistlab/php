@@ -24,10 +24,10 @@ abstract class Grammar implements GrammarInterface
     public function compileAggregator(Builder $builder, $aggregator)
     {
         if (is_null($aggregator)) {
-            throw new DatabaseException("Missing aggregator.");
+            throw new DatabaseException('Missing aggregator.');
         }
 
-        if (! in_array($aggregator, $this->aggregators)) {
+        if (!in_array($aggregator, $this->aggregators)) {
             throw new DatabaseException("Invalid aggregator [{$aggregator}].");
         }
 
@@ -50,12 +50,12 @@ abstract class Grammar implements GrammarInterface
         foreach ($this->getAggregatorComponents($aggregator) as $component) {
             $method = 'compile'.ucfirst($component).'ComponentFor'.ucfirst($aggregator).'Aggregator';
 
-            if (! method_exists($this, $method)) {
+            if (!method_exists($this, $method)) {
                 $method = 'compile'.ucfirst($component).'Component';
             }
 
             if ($content = $this->$method($builder, $aggregator)) {
-                if (! is_array($content)) {
+                if (!is_array($content)) {
                     $content = [$content, true];
                 }
 
@@ -82,7 +82,8 @@ abstract class Grammar implements GrammarInterface
     /**
      * Convert an array of column names into a delimited string.
      *
-     * @param  array   $columns
+     * @param array $columns
+     *
      * @return string
      */
     public function columnize(array $columns)
@@ -97,8 +98,9 @@ abstract class Grammar implements GrammarInterface
     /**
      * Wrap a value in keyword identifiers.
      *
-     * @param  string  $value
-     * @param  bool    $prefixAlias
+     * @param string $value
+     * @param bool   $prefixAlias
+     *
      * @return string
      */
     public function wrap($value, $prefixAlias = false)
@@ -145,7 +147,8 @@ abstract class Grammar implements GrammarInterface
     /**
      * Wrap a single string in keyword identifiers.
      *
-     * @param  string  $value
+     * @param string $value
+     *
      * @return string
      */
     public function wrapValue($value)

@@ -1,17 +1,17 @@
 <?php
 
-use Fist\Testing\TestCase;
-use Fist\Testing\WithDatabase;
 use Fist\Container\Container;
-use Fist\Database\Database;
+use Fist\Database\Connectors\ConnectionInterface;
 use Fist\Database\Connectors\MysqlConnection;
 use Fist\Database\Connectors\SqliteConnection;
+use Fist\Database\Database;
+use Fist\Database\DatabaseException;
+use Fist\Database\Query\Statement;
 use Fist\Repository\ArrayRepository;
 use Fist\Repository\ContainerRepository;
 use Fist\Repository\RepositoryInterface;
-use Fist\Database\Connectors\ConnectionInterface;
-use Fist\Database\DatabaseException;
-use Fist\Database\Query\Statement;
+use Fist\Testing\TestCase;
+use Fist\Testing\WithDatabase;
 
 class DatabaseConnectionTest extends TestCase
 {
@@ -19,21 +19,21 @@ class DatabaseConnectionTest extends TestCase
 
     protected $testConnections = [
         'mysql' => [
-            'driver' => 'mysql',
+            'driver'   => 'mysql',
             'database' => 'database',
             'hostname' => 'localhost',
             'username' => '',
             'password' => '',
         ],
         'sqlite' => [
-            'driver' => 'sqlite',
+            'driver'   => 'sqlite',
             'database' => ':memory:', // in-memory
             'hostname' => 'localhost',
             'username' => '',
             'password' => '',
         ],
         'tmp' => [
-            'driver' => 'sqlite',
+            'driver'   => 'sqlite',
             'database' => '', // temporary
             'hostname' => 'localhost',
             'username' => '',
@@ -186,7 +186,7 @@ class DatabaseConnectionTest extends TestCase
 
         // Change from in-memory to temporary database
         $db->setConnection('sqlite', [
-            'driver' => 'sqlite',
+            'driver'   => 'sqlite',
             'database' => '',
         ]);
 
@@ -216,10 +216,10 @@ class DatabaseConnectionTest extends TestCase
     {
         $db = $this->prepareDatabase();
 
-        $statement = $db->raw("SELECT * FROM items WHERE name = ? OR name = ?", ['foo', 1]);
+        $statement = $db->raw('SELECT * FROM items WHERE name = ? OR name = ?', ['foo', 1]);
 
         $this->assertInstanceOf(Statement::class, $statement);
-        $this->assertEquals("SELECT * FROM items WHERE name = ? OR name = ?", $statement->toSql());
+        $this->assertEquals('SELECT * FROM items WHERE name = ? OR name = ?', $statement->toSql());
         $this->assertEquals("SELECT * FROM items WHERE name = 'foo' OR name = 1", $statement->toSqlWithBindings());
 
         $results = $statement->execute();
@@ -262,13 +262,13 @@ class DatabaseConnectionTest extends TestCase
     {
         $db = $this->prepareDatabase();
 
-        $results = $db->statement("SELECT * FROM items");
+        $results = $db->statement('SELECT * FROM items');
 
         $this->assertCount(1, $results);
 
         $db->table('items')->truncate();
 
-        $results = $db->statement("SELECT * FROM items");
+        $results = $db->statement('SELECT * FROM items');
 
         $this->assertCount(0, $results);
     }

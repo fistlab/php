@@ -8,14 +8,14 @@ use PDOStatement;
 class Statement
 {
     /**
-     * The PDOStatement instance
+     * The PDOStatement instance.
      *
      * @var \PDOStatement
      */
     protected $statement;
 
     /**
-     * Binding parameters
+     * Binding parameters.
      *
      * @var array
      */
@@ -24,9 +24,9 @@ class Statement
     /**
      * Statement constructor.
      *
-     * @param \PDO $pdo
+     * @param \PDO          $pdo
      * @param \PDOStatement $statement
-     * @param array $bindings
+     * @param array         $bindings
      */
     public function __construct(PDO $pdo, PDOStatement $statement, array $bindings = [])
     {
@@ -38,7 +38,7 @@ class Statement
     }
 
     /**
-     * Execute query statement
+     * Execute query statement.
      *
      * @return array
      */
@@ -50,7 +50,7 @@ class Statement
     }
 
     /**
-     * Get query string
+     * Get query string.
      *
      * @return string
      */
@@ -60,7 +60,7 @@ class Statement
     }
 
     /**
-     * Get query string with bindings
+     * Get query string with bindings.
      *
      * @return string
      */
@@ -76,7 +76,7 @@ class Statement
     }
 
     /**
-     * Get PDOStatement instance
+     * Get PDOStatement instance.
      *
      * @return \PDOStatement
      */
@@ -96,9 +96,10 @@ class Statement
     }
 
     /**
-     * Quote parameter according to its type
+     * Quote parameter according to its type.
      *
      * @param $parameter
+     *
      * @return string
      */
     protected function quote($parameter)

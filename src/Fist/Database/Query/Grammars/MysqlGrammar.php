@@ -60,12 +60,12 @@ class MysqlGrammar extends Grammar
         $values = $builder->getValues();
         $keys = isset($values[0]) ? array_keys($values[0]) : [];
 
-        return "(".implode(', ', array_map(function ($column) {
+        return '('.implode(', ', array_map(function ($column) {
             return $this->wrapColumn($column);
-        }, $keys)).") VALUES ".implode(', ', array_map(function ($items) {
-            return "(".implode(', ', array_map(function ($item) {
+        }, $keys)).') VALUES '.implode(', ', array_map(function ($items) {
+            return '('.implode(', ', array_map(function ($item) {
                 return $this->wrapValue($item);
-            }, $items)).")";
+            }, $items)).')';
         }, $builder->getValues()));
     }
 
@@ -148,7 +148,7 @@ class MysqlGrammar extends Grammar
             return;
         }
 
-        return "GROUP BY ".implode(', ', array_map(function ($group) {
+        return 'GROUP BY '.implode(', ', array_map(function ($group) {
             return $this->wrapColumn($group);
         }, $groups));
     }

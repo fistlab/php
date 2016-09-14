@@ -3,8 +3,8 @@
 namespace Fist\Database\Connectors;
 
 use Fist\Database\Query\Grammars\SqliteGrammar;
-use PDO;
 use Fist\Repository\RepositoryInterface;
+use PDO;
 
 class SqliteConnection extends Connection
 {

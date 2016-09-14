@@ -2,10 +2,10 @@
 
 namespace Fist\Database\Connectors;
 
-use PDOStatement;
+use Fist\Database\Query\Builder as QueryBuilder;
 use Fist\Database\Query\Statement;
 use Fist\Repository\RepositoryInterface;
-use Fist\Database\Query\Builder as QueryBuilder;
+use PDOStatement;
 
 abstract class Connection implements ConnectionInterface
 {

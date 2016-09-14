@@ -2,11 +2,11 @@
 
 namespace Fist\Database;
 
+use Closure;
 use Fist\Database\Connectors\ConnectionInterface;
 use Fist\Repository\ArrayRepository;
-use PDO;
-use Closure;
 use Fist\Repository\RepositoryInterface;
+use PDO;
 
 class Database
 {

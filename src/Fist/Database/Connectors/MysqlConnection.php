@@ -3,8 +3,8 @@
 namespace Fist\Database\Connectors;
 
 use Fist\Database\Query\Grammars\MysqlGrammar;
-use PDO;
 use Fist\Repository\RepositoryInterface;
+use PDO;
 
 class MysqlConnection extends Connection
 {
