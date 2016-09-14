@@ -68,9 +68,9 @@ class Builder
         }
 
         $this->where[] = [
-            'column' => $column,
-            'operator' => $operator,
-            'value' => $value,
+            'column'     => $column,
+            'operator'   => $operator,
+            'value'      => $value,
             'aggregator' => 'AND',
         ];
 
@@ -86,26 +86,26 @@ class Builder
         }
 
         $this->where[] = [
-            'column' => $column,
-            'operator' => $operator,
-            'value' => $value,
+            'column'     => $column,
+            'operator'   => $operator,
+            'value'      => $value,
             'aggregator' => 'OR',
         ];
 
         return $this;
     }
 
-    function orderBy($column, $direction = 'ASC')
+    public function orderBy($column, $direction = 'ASC')
     {
         $this->orders[] = [
-            'column' => $column,
-            'direction' => $direction
+            'column'    => $column,
+            'direction' => $direction,
         ];
 
         return $this;
     }
 
-    function groupBy($column)
+    public function groupBy($column)
     {
         $this->groups[] = $column;
 
@@ -121,10 +121,10 @@ class Builder
         }
 
         $this->joins[] = [
-            'type' => 'inner',
-            'table' => $table,
-            'key' => $key,
-            'foreign' => $foreign,
+            'type'     => 'inner',
+            'table'    => $table,
+            'key'      => $key,
+            'foreign'  => $foreign,
             'operator' => $operator,
         ];
 
@@ -140,10 +140,10 @@ class Builder
         }
 
         $this->joins[] = [
-            'type' => 'right',
-            'table' => $table,
-            'key' => $key,
-            'foreign' => $foreign,
+            'type'     => 'right',
+            'table'    => $table,
+            'key'      => $key,
+            'foreign'  => $foreign,
             'operator' => $operator,
         ];
 
@@ -159,10 +159,10 @@ class Builder
         }
 
         $this->joins[] = [
-            'type' => 'left',
-            'table' => $table,
-            'key' => $key,
-            'foreign' => $foreign,
+            'type'     => 'left',
+            'table'    => $table,
+            'key'      => $key,
+            'foreign'  => $foreign,
             'operator' => $operator,
         ];
 
@@ -178,10 +178,10 @@ class Builder
         }
 
         $this->joins[] = [
-            'type' => 'outer',
-            'table' => $table,
-            'key' => $key,
-            'foreign' => $foreign,
+            'type'     => 'outer',
+            'table'    => $table,
+            'key'      => $key,
+            'foreign'  => $foreign,
             'operator' => $operator,
         ];
 

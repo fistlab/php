@@ -3,11 +3,11 @@
 namespace Fist\Container;
 
 use Closure;
-use ReflectionClass;
-use ReflectionMethod;
-use ReflectionFunction;
-use ReflectionParameter;
 use InvalidArgumentException;
+use ReflectionClass;
+use ReflectionFunction;
+use ReflectionMethod;
+use ReflectionParameter;
 
 class Container
 {
@@ -59,7 +59,7 @@ class Container
 
         $this->bindings[$name] = [
             'concrete' => $closure,
-            'shared' => $shared,
+            'shared'   => $shared,
         ];
 
         if ($bound) {
