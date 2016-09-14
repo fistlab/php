@@ -33,3 +33,4 @@ split()
 
 split container    src/Fist/Container:https://github.com/fistphp/container.git                "master"
 split repository   src/Fist/Repository:https://github.com/fistphp/repository.git              "master"
+split database     src/Fist/Database:https://github.com/fistphp/database.git                  "master"
