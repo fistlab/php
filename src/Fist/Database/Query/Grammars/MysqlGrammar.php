@@ -106,6 +106,10 @@ class MysqlGrammar extends Grammar
         }
 
         return 'ORDER BY '.implode(', ', array_map(function ($order) {
+            if ($order['random']) {
+                return 'RAND()';
+            }
+
             $column = $this->wrapColumn($order['column']);
 
             $direction = isset($order['direction']) ? $order['direction'] : null;

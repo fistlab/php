@@ -14,4 +14,29 @@ class SqliteGrammar extends MysqlGrammar
 
         return "DELETE FROM {$table}";
     }
+
+    protected function compileOrdersComponent(Builder $builder)
+    {
+        $orders = $builder->getOrders();
+
+        if (empty($orders)) {
+            return;
+        }
+
+        return 'ORDER BY '.implode(', ', array_map(function ($order) {
+            if ($order['random']) {
+                return 'RANDOM()';
+            }
+
+            $column = $this->wrapColumn($order['column']);
+
+            $direction = isset($order['direction']) ? $order['direction'] : null;
+
+            if (is_null($direction)) {
+                return $column;
+            }
+
+            return "{$column} {$direction}";
+        }, $orders));
+    }
 }

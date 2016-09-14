@@ -100,6 +100,16 @@ class Builder
         $this->orders[] = [
             'column'    => $column,
             'direction' => $direction,
+            'random'    => false,
+        ];
+
+        return $this;
+    }
+
+    public function orderByRandom()
+    {
+        $this->orders[] = [
+            'random' => true,
         ];
 
         return $this;

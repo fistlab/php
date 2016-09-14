@@ -370,6 +370,16 @@ class DatabaseConnectionTest extends TestCase
         $this->assertEquals('SELECT * FROM `items` WHERE `name` = "foo"', $db->table('items')->where('name', 'foo')->toSql());
     }
 
+    public function testOrderByRandom()
+    {
+        $db = $this->prepareDatabase();
+
+        $this->assertEquals(
+            'SELECT * FROM `items` ORDER BY RANDOM()',
+            $db->table('items')->orderByRandom()->toSql()
+        );
+    }
+
     protected function prepareDatabase()
     {
         $db = new Database(
