@@ -166,7 +166,7 @@ class MysqlGrammar extends Grammar
         }
 
         return implode(' ', array_map(function ($join) {
-            $type = strtoupper($join['type']);
+            $type = $join['type'];
             $table = $this->wrapTable($join['table']);
             $key = $this->wrapColumn($join['key']);
             $operator = $join['operator'];

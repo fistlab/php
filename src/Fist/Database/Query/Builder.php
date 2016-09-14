@@ -131,7 +131,7 @@ class Builder
         }
 
         $this->joins[] = [
-            'type'     => 'inner',
+            'type'     => 'INNER',
             'table'    => $table,
             'key'      => $key,
             'foreign'  => $foreign,
@@ -150,7 +150,7 @@ class Builder
         }
 
         $this->joins[] = [
-            'type'     => 'right',
+            'type'     => 'RIGHT',
             'table'    => $table,
             'key'      => $key,
             'foreign'  => $foreign,
@@ -169,7 +169,7 @@ class Builder
         }
 
         $this->joins[] = [
-            'type'     => 'left',
+            'type'     => 'LEFT',
             'table'    => $table,
             'key'      => $key,
             'foreign'  => $foreign,
@@ -188,7 +188,7 @@ class Builder
         }
 
         $this->joins[] = [
-            'type'     => 'outer',
+            'type'     => 'OUTER',
             'table'    => $table,
             'key'      => $key,
             'foreign'  => $foreign,
