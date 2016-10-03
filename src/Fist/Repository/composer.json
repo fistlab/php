@@ -1,0 +1,34 @@
+{
+  "name": "fist/repository",
+  "description": "The Fistlab PHP Repository Components",
+  "keywords": ["fistlab", "fistphp", "component", "repository"],
+  "license": "MIT",
+  "homepage": "https://fistlab.com/php/repository",
+  "support": {
+    "issues": "https://github.com/fistlab/php/issues",
+    "source": "https://github.com/fistlab/php"
+  },
+  "authors": [
+    {
+      "name": "Mark Topper",
+      "email": "mark@ulties.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.6.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "Fist\\Repository\\": ""
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  },
+  "suggest": {
+    "fist/container": "Required for using ContainerRepository"
+  },
+  "minimum-stability": "dev"
+}
