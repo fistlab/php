@@ -106,14 +106,11 @@ abstract class Grammar implements GrammarInterface
     public function wrap($value, $prefixAlias = false)
     {
         // Work for "as" aliases.
-        if (strpos(strtolower($value), ' as ') !== false) {
-            $segments = explode(' ', $value);
-
+        if (is_array($value) && count($value) === 2) {
             if ($prefixAlias) {
-                $segments[2] = $this->tablePrefix.$segments[2];
-            }
-
-            return $this->wrap($segments[0]).' as '.$this->wrapValue($segments[2]);
+                $value[1] = $this->tablePrefix.$value[1];
+            }            
+            return $this->wrap($value[0]).' as '.$this->wrapValue($value[1]);
         }
 
         $wrapped = [];
