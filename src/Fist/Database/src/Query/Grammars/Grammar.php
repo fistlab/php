@@ -111,7 +111,7 @@ abstract class Grammar implements GrammarInterface
                 $value[1] = $this->tablePrefix.$value[1];
             }
 
-            return $this->wrap($value[0]).' as '.$this->wrapValue($value[1]);
+            return $this->wrap($value[0]).' as '.$this->wrap($value[1]);
         }
 
         $wrapped = [];
@@ -123,7 +123,7 @@ abstract class Grammar implements GrammarInterface
             if ($key == 0 && count($segments) > 1) {
                 $wrapped[] = $this->wrapTable($segment);
             } else {
-                $wrapped[] = $this->wrapValue($segment);
+                $wrapped[] = $this->wrapColumn($segment);
             }
         }
 

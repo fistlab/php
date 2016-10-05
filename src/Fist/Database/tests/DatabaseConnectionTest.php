@@ -380,6 +380,16 @@ class DatabaseConnectionTest extends TestCase
         );
     }
 
+    public function testSelectingColumnAsAlias()
+    {
+        $db = $this->prepareDatabase();
+
+        $this->assertEquals(
+            'SELECT `foo` as `bar`, `toast` FROM `items`',
+            $db->table('items')->select([['foo', 'bar'], 'toast'])->toSql()
+        );
+    }
+
     protected function prepareDatabase()
     {
         $db = new Database(
