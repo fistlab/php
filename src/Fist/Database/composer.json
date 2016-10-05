@@ -15,7 +15,7 @@
     }
   ],
   "require": {
-    "php": ">=5.6.4",
+    "php": ">=5.4",
     "fist/repository": "self.version"
   },
   "require-dev": {
