@@ -30,6 +30,4 @@ install:
 script: vendor/bin/phpunit
 
 matrix:
-  allow_failures:
-    - php: 7.1
   fast_finish: true
