@@ -20,7 +20,8 @@
   },
   "require-dev": {
     "phpunit/phpunit": "~5.4",
-    "fist/testing": "self.version"
+    "fist/testing": "self.version",
+    "fist/container": "self.version"
   },
   "autoload": {
     "psr-4": {
