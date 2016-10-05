@@ -109,7 +109,8 @@ abstract class Grammar implements GrammarInterface
         if (is_array($value) && count($value) === 2) {
             if ($prefixAlias) {
                 $value[1] = $this->tablePrefix.$value[1];
-            }            
+            }
+
             return $this->wrap($value[0]).' as '.$this->wrapValue($value[1]);
         }
 
