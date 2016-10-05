@@ -3,7 +3,7 @@
   "description": "The Fistlab PHP Repository Components",
   "keywords": ["fistlab", "fistphp", "component", "repository"],
   "license": "MIT",
-  "homepage": "https://fistlab.com/php/repository",
+  "homepage": "https://github.com/fistphp/repository",
   "support": {
     "issues": "https://github.com/fistlab/php/issues",
     "source": "https://github.com/fistlab/php"

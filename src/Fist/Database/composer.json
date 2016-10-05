@@ -3,7 +3,7 @@
   "description": "The Fistlab PHP Database Components",
   "keywords": ["fistlab", "fistphp", "component", "database"],
   "license": "MIT",
-  "homepage": "https://fistlab.com/php/database",
+  "homepage": "https://github.com/fistphp/database",
   "support": {
     "issues": "https://github.com/fistlab/php/issues",
     "source": "https://github.com/fistlab/php"

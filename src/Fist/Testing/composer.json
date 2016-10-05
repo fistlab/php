@@ -3,7 +3,7 @@
   "description": "The Fistlab PHP Testing Components",
   "keywords": ["fistlab", "fistphp", "component", "testing"],
   "license": "MIT",
-  "homepage": "https://fistlab.com/php/testing",
+  "homepage": "https://github.com/fistphp/testing",
   "support": {
     "issues": "https://github.com/fistlab/php/issues",
     "source": "https://github.com/fistlab/php"

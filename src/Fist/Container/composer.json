@@ -3,7 +3,7 @@
   "description": "The Fistlab PHP Container Components",
   "keywords": ["fistlab", "fistphp", "component", "container"],
   "license": "MIT",
-  "homepage": "https://fistlab.com/php/container",
+  "homepage": "https://github.com/fistphp/container",
   "support": {
     "issues": "https://github.com/fistlab/php/issues",
     "source": "https://github.com/fistlab/php"
