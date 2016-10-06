@@ -176,15 +176,18 @@ You can join additional tables using our joining methods.
 
 ```
 $db->table('users')
-    ->join('devices', 'users.id', '=', 'devices.id')
+    ->join('devices', 'users.id', '=', 'devices.user_id')
     ->get();
 ```
+
+> By default the operator is `=` for join clauses.  
+> So you can actually use `join('devices', 'users.id', 'devices.user_id')`
 
 ##### Outer join table
 
 ```
 $db->table('users')
-    ->outerJoin('devices', 'users.id', '=', 'devices.id')
+    ->outerJoin('devices', 'users.id', '=', 'devices.user_id')
     ->get();
 ```
 
@@ -192,14 +195,14 @@ $db->table('users')
 
 ```
 $db->table('users')
-    ->leftJoin('devices', 'users.id', '=', 'devices.id')
+    ->leftJoin('devices', 'users.id', '=', 'devices.user_id')
     ->get();
 ```
 ##### Right join table
 
 ```
 $db->table('users')
-    ->rightJoin('devices', 'users.id', '=', 'devices.id')
+    ->rightJoin('devices', 'users.id', '=', 'devices.user_id')
     ->get();
 ```
 
@@ -207,7 +210,7 @@ $db->table('users')
 
 ```
 $db->table('users')
-    ->crossJoin('devices', 'users.id', '=', 'devices.id')
+    ->crossJoin('devices', 'users.id', '=', 'devices.user_id')
     ->get();
 ```
 
@@ -216,7 +219,7 @@ $db->table('users')
 ```
 $db->table('users')
     ->join('devices', function ($join) {
-        $join->on('users.id', '=', 'devices.id')
+        $join->on('users.id', '=', 'devices.user_id')
             ->where('devices.platform', 'ios');
     })
     ->get();
