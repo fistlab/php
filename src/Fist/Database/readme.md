@@ -84,7 +84,7 @@ Often you might want to get just a single database row object, like the current 
 This can be done quite easy as well.
 
 ```
-$db->table('users')->first();
+$user = $db->table('users')->first();
 
 echo "Hello ".$user->username;
 ```
