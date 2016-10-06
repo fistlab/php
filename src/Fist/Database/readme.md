@@ -49,7 +49,7 @@ $db = new \Fist\Database\Database(
 
 > I have made more setup at this [gist](https://gist.github.com/marktopper/2f783901f19da6597b935e3b432fa41d).
 
-### Usage
+## Usage
 
 #### Running raw statements
 
