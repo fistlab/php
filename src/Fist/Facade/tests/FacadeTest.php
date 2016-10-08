@@ -1,9 +1,9 @@
 <?php
 
-use Fist\Facade\Facade;
-use Fist\Testing\TestCase;
 use Fist\Container\Container;
 use Fist\Facade\ContainerFacade;
+use Fist\Facade\Facade;
+use Fist\Testing\TestCase;
 
 class FacadeTest extends TestCase
 {
