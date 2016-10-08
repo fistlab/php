@@ -2,6 +2,8 @@
 
 use Fist\Facade\Facade;
 use Fist\Testing\TestCase;
+use Fist\Container\Container;
+use Fist\Facade\ContainerFacade;
 
 class FacadeTest extends TestCase
 {
@@ -23,6 +25,30 @@ class FacadeTest extends TestCase
     {
         ExampleFacade::notExistingMethod();
     }
+
+    public function testContainerFacadeBuilds()
+    {
+        $container = new Container();
+
+        Container::setInstance($container);
+
+        $container->instance('example', new ExampleInstance());
+
+        $this->assertEquals('foo', ExampleContainerFacade::foo());
+    }
+
+    /**
+     * @expectedException ReflectionException
+     * @expectedExceptionMessage Class example does not exist
+     */
+    public function testContainerFacadeThrowException()
+    {
+        $container = new Container();
+
+        Container::setInstance($container);
+
+        $this->assertEquals('foo', ExampleContainerFacade::foo());
+    }
 }
 
 class ExampleInstance
@@ -43,5 +69,13 @@ class ExampleFacade extends Facade
     public static function getFacadeInstance()
     {
         return new ExampleInstance();
+    }
+}
+
+class ExampleContainerFacade extends ContainerFacade
+{
+    public static function getFacadeAccessor()
+    {
+        return 'example';
     }
 }
