@@ -318,9 +318,27 @@ $db->table('users')
 The `insert` method accepts an array of column names and values.
 
 ```
-$db->table('users')->insert(
+$db->table('users')->insert([
     ['email' => 'mark@example.com', 'username' => 'mark'],
     ['email' => 'john@example.com', 'username' => 'john'],
+]);
+```
+
+Or you can insert a single row.
+
+```
+$db->table('users')->insert(
+    ['email' => 'mark@example.com', 'username' => 'mark']
+);
+```
+
+##### Auto incrementing IDs
+
+Want to insert a row and get the auto incremented ID? You can do this using the `insertGetId` method.
+
+```
+$id = $db->table('users')->insertGetId(
+    ['email' => 'mark@example.com', 'username' => 'mark']
 );
 ```
 
