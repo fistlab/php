@@ -21,6 +21,7 @@
     "fist/container": "self.version",
     "fist/database": "self.version",
     "fist/repository": "self.version",
+    "fist/routing": "self.version",
     "fist/facade": "self.version",
     "fist/testing": "self.version"
   },
@@ -32,6 +33,7 @@
       "Fist\\Container\\": "src/Fist/Container/src/",
       "Fist\\Database\\": "src/Fist/Database/src/",
       "Fist\\Repository\\": "src/Fist/Repository/src/",
+      "Fist\\Routing\\": "src/Fist/Routing/src/",
       "Fist\\Facade\\": "src/Fist/Facade/src/",
       "Fist\\Testing\\": "src/Fist/Testing/src/"
     }
