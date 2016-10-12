@@ -37,7 +37,7 @@ class Route
 
     public function matches($uri)
     {
-        return (boolean) preg_match("#{$this->generatePattern()}$#", $uri);
+        return (bool) preg_match("#{$this->generatePattern()}$#", $uri);
     }
 
     public function generatePattern()

@@ -1,8 +1,8 @@
 <?php
 
-use Fist\Testing\TestCase;
-use Fist\Routing\Router;
 use Fist\Routing\Route;
+use Fist\Routing\Router;
+use Fist\Testing\TestCase;
 
 class RoutingTest extends TestCase
 {
