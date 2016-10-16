@@ -21,7 +21,7 @@ class Router
 
     public function get($uri, Closure $closure)
     {
-        return $this->add(['get'], $uri, $closure);
+        return $this->add(['get', 'head'], $uri, $closure);
     }
 
     public function post($uri, Closure $closure)
