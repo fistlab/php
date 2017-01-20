@@ -81,7 +81,7 @@ class DatabaseConnectionTest extends TestCase
         $this->assertEquals('mysql', $db->getDefaultConnection());
         $this->throwsException(function () use ($db) {
             $this->assertInstanceOf(MysqlConnection::class, $db->connection());
-        }, PDOException::class, "SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO)");
+        }, PDOException::class, "SQLSTATE[HY000] [1044] Access denied for user ''@'localhost' to database 'database'");
 
         $db->setDefaultConnection('sqlite');
 
@@ -100,8 +100,8 @@ class DatabaseConnectionTest extends TestCase
 
         $this->assertEquals('mysql', $db->getDefaultDriver());
         $this->throwsException(function () use ($db) {
-            $this->assertInstanceOf(MysqlConnection::class, $db->connection());
-        }, PDOException::class, "SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO)");
+            $db->connection()->statement('SELECT * FROM test');
+        }, PDOException::class, "SQLSTATE[3D000]: Invalid catalog name: 1046 No database selected");
 
         $db->setDefaultDriver('sqlite');
         $this->assertEquals('sqlite', $db->getDefaultDriver());
@@ -119,7 +119,7 @@ class DatabaseConnectionTest extends TestCase
 
         $this->throwsException(function () use ($db) {
             $this->assertInstanceOf(MysqlConnection::class, $db->connection());
-        }, PDOException::class, "SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO)");
+        }, PDOException::class, "SQLSTATE[HY000] [1044] Access denied for user ''@'localhost' to database 'database'");
 
         $this->assertInstanceOf(SqliteConnection::class, $db->connection('sqlite'));
     }
@@ -169,8 +169,8 @@ class DatabaseConnectionTest extends TestCase
         // Connection fails using the mysql setup since it's not setup.
         // So we expect it to fail
         $this->throwsException(function () use ($db) {
-            $db->connection();
-        }, PDOException::class, "SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO)");
+            $db->connection()->statement('SELECT * FROM test');
+        }, PDOException::class, "SQLSTATE[3D000]: Invalid catalog name: 1046 No database selected");
     }
 
     public function testSharedDriverConnectionsUpdateSettings()
