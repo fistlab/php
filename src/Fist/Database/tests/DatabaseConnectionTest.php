@@ -81,7 +81,10 @@ class DatabaseConnectionTest extends TestCase
         $this->assertEquals('mysql', $db->getDefaultConnection());
         $this->throwsException(function () use ($db) {
             $this->assertInstanceOf(MysqlConnection::class, $db->connection());
-        }, PDOException::class, "SQLSTATE[HY000] [1044] Access denied for user ''@'localhost' to database 'database'");
+        }, PDOException::class, [
+            "SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO)",
+            "SQLSTATE[HY000] [1044] Access denied for user ''@'localhost' to database 'database'",
+        ]);
 
         $db->setDefaultConnection('sqlite');
 
@@ -119,7 +122,10 @@ class DatabaseConnectionTest extends TestCase
 
         $this->throwsException(function () use ($db) {
             $this->assertInstanceOf(MysqlConnection::class, $db->connection());
-        }, PDOException::class, "SQLSTATE[HY000] [1044] Access denied for user ''@'localhost' to database 'database'");
+        }, PDOException::class, [
+            "SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO)",
+            "SQLSTATE[HY000] [1044] Access denied for user ''@'localhost' to database 'database'",
+        ]);
 
         $this->assertInstanceOf(SqliteConnection::class, $db->connection('sqlite'));
     }

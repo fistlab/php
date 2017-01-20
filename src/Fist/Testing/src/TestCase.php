@@ -9,7 +9,7 @@ use PHPUnit_Framework_TestCase;
 
 class TestCase extends PHPUnit_Framework_TestCase
 {
-    public function throwsException(Closure $closure, $class = null, $message = null)
+    public function throwsException(Closure $closure, $class = null, $messages = null)
     {
         try {
             $closure();
@@ -22,8 +22,10 @@ class TestCase extends PHPUnit_Framework_TestCase
                 $this->assertEquals($class, get_class($e));
             }
 
-            if (!is_null($message)) {
-                $this->assertEquals($message, $e->getMessage());
+            if (is_array($messages)) {
+                $this->assertTrue(in_array($e->getMessage(), $messages));
+            } else if (!is_null($messages)) {
+                $this->assertEquals($messages, $e->getMessage());
             }
         }
     }
