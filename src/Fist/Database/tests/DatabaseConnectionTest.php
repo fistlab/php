@@ -101,7 +101,7 @@ class DatabaseConnectionTest extends TestCase
         $this->assertEquals('mysql', $db->getDefaultDriver());
         $this->throwsException(function () use ($db) {
             $db->connection()->statement('SELECT * FROM test');
-        }, PDOException::class, "SQLSTATE[3D000]: Invalid catalog name: 1046 No database selected");
+        }, PDOException::class, 'SQLSTATE[3D000]: Invalid catalog name: 1046 No database selected');
 
         $db->setDefaultDriver('sqlite');
         $this->assertEquals('sqlite', $db->getDefaultDriver());
@@ -170,7 +170,7 @@ class DatabaseConnectionTest extends TestCase
         // So we expect it to fail
         $this->throwsException(function () use ($db) {
             $db->connection()->statement('SELECT * FROM test');
-        }, PDOException::class, "SQLSTATE[3D000]: Invalid catalog name: 1046 No database selected");
+        }, PDOException::class, 'SQLSTATE[3D000]: Invalid catalog name: 1046 No database selected');
     }
 
     public function testSharedDriverConnectionsUpdateSettings()
