@@ -16,7 +16,11 @@ class RoutingTest extends TestCase
     protected function addRoute(Router $router, $method, array $methods = null, $uri = 'foo', Closure $closure = null)
     {
         if (is_null($methods)) {
-            $methods = [$method];
+            if (strtolower($method) == 'get') {
+                $methods = ['get', 'head'];
+            } else {
+                $methods = [$method];
+            }
         }
 
         if (is_null($closure)) {
