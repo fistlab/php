@@ -24,7 +24,7 @@ class TestCase extends PHPUnit_Framework_TestCase
 
             if (is_array($messages)) {
                 $this->assertTrue(in_array($e->getMessage(), $messages));
-            } else if (!is_null($messages)) {
+            } elseif (!is_null($messages)) {
                 $this->assertEquals($messages, $e->getMessage());
             }
         }
