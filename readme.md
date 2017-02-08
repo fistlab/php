@@ -20,7 +20,7 @@ Current programming languages: [php](https://github.com/fistlab/php)
 
 ## Contributing
 
-Thank you for considering contributing to the Fistlab components! The contribution guide can be found [here](https://github.com/fistlab/php/contributing.md).
+Thank you for considering contributing to the Fistlab components! The contribution guide can be found [here](https://github.com/fistlab/php/blob/master/contributing.md).
 
 ## Security Vulnerabilities
 
