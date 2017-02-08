@@ -1,6 +1,6 @@
 # Fistlab Database
 
-[![StyleCI](https://styleci.io/repos/68215997/shield?style=flat)](https://styleci.io/repos/68215997)
+[![StyleCI](https://styleci.io/repos/67337527/shield?style=flat)](https://styleci.io/repos/67337527)
 [![Build Status](https://travis-ci.org/fistphp/database.svg)](https://travis-ci.org/fistphp/database)
 [![Total Downloads](https://poser.pugx.org/fist/database/d/total.svg)](https://packagist.org/packages/fist/database)
 [![Latest Stable Version](https://poser.pugx.org/fist/database/v/stable.svg)](https://packagist.org/packages/fist/database)
