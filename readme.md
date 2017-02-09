@@ -6,6 +6,9 @@
 [![Latest Stable Version](https://poser.pugx.org/fistlab/php/v/stable.svg)](https://packagist.org/packages/fistlab/php)
 [![Latest Unstable Version](https://poser.pugx.org/fistlab/php/v/unstable.svg)](https://packagist.org/packages/fistlab/php)
 [![License](https://poser.pugx.org/fistlab/php/license.svg)](https://packagist.org/packages/fistlab/php)
+[![Code Climate](https://codeclimate.com/github/fistlab/php/badges/gpa.svg)](https://codeclimate.com/github/fistlab/php)
+[![Test Coverage](https://codeclimate.com/github/fistlab/php/badges/coverage.svg)](https://codeclimate.com/github/fistlab/php/coverage)
+[![Issue Count](https://codeclimate.com/github/fistlab/php/badges/issue_count.svg)](https://codeclimate.com/github/fistlab/php)
 
 ## Idea
 
