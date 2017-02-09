@@ -9,6 +9,9 @@
 [![Code Climate](https://codeclimate.com/github/fistlab/php/badges/gpa.svg)](https://codeclimate.com/github/fistlab/php)
 [![Test Coverage](https://codeclimate.com/github/fistlab/php/badges/coverage.svg)](https://codeclimate.com/github/fistlab/php/coverage)
 [![Issue Count](https://codeclimate.com/github/fistlab/php/badges/issue_count.svg)](https://codeclimate.com/github/fistlab/php)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/fistlab/php/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/fistlab/php/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/fistlab/php/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/fistlab/php/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/fistlab/php/badges/build.png?b=master)](https://scrutinizer-ci.com/g/fistlab/php/build-status/master)
 
 ## Idea
 
