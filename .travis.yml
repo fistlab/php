@@ -31,6 +31,3 @@ script: vendor/bin/phpunit
 
 matrix:
   fast_finish: true
-
-addons:
-  srcclr: true
