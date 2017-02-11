@@ -82,13 +82,13 @@ class Router
     public function dispatch($method = null, $uri = null)
     {
         if (is_null($method)) {
-            $method = $_SERVER['REQUEST_METHOD'];
+            $method = getenv('REQUEST_METHOD');
         }
 
         $method = strtolower($method);
 
         if (is_null($uri)) {
-            $uri = $_SERVER['REQUEST_URI'];
+            $uri = getenv('REQUEST_URI');
         }
 
         $uri = $this->prepareQueryString($uri);
