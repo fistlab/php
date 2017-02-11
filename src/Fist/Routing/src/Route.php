@@ -43,7 +43,7 @@ class Route
     public function generatePattern()
     {
         if (is_null($this->pattern)) {
-            $this->pattern = preg_replace_callback('~\{(.*?)\}~s', function($pattern) {
+            $this->pattern = preg_replace_callback('~\{(.*?)\}~s', function ($pattern) {
                 $content = $pattern[1];
 
                 if (strpos($content, ':')) {
