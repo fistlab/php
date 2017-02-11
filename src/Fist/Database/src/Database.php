@@ -17,17 +17,6 @@ class Database
     public function __construct(RepositoryInterface $repository)
     {
         $this->repository = $repository;
-
-        /*
-        try {
-            $this->_pdo = new PDO('mysql:host=' . Config::get('mysqli.host') . ';dbname=' . Config::get('mysqli.db'), Config::get('mysqli.username'), Config::get('mysqli.password'), [PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"]);
-            $this->_pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            //søger for at pdo ikke setter params ind i query strangen
-            $this->_pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
-        } catch(\PDOException $e) {
-            die($e->getMessage());
-        }
-        */
     }
 
     public function getRepository()
