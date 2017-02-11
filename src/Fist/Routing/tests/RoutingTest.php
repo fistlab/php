@@ -42,7 +42,7 @@ class RoutingTest extends TestCase
 
     public function testAddingGetRoute()
     {
-        $route = $this->addRoute(
+        $this->addRoute(
             $router = new Router(),
             'get'
         );
@@ -50,7 +50,7 @@ class RoutingTest extends TestCase
 
     public function testAddingPostRoute()
     {
-        $route = $this->addRoute(
+        $this->addRoute(
             $router = new Router(),
             'post'
         );
@@ -58,7 +58,7 @@ class RoutingTest extends TestCase
 
     public function testAddingPutRoute()
     {
-        $route = $this->addRoute(
+        $this->addRoute(
             $router = new Router(),
             'put'
         );
@@ -66,7 +66,7 @@ class RoutingTest extends TestCase
 
     public function testAddingPatchRoute()
     {
-        $route = $this->addRoute(
+        $this->addRoute(
             $router = new Router(),
             'patch'
         );
@@ -82,7 +82,7 @@ class RoutingTest extends TestCase
 
     public function testAddingHeadRoute()
     {
-        $route = $this->addRoute(
+        $this->addRoute(
             $router = new Router(),
             'head'
         );
@@ -90,7 +90,7 @@ class RoutingTest extends TestCase
 
     public function testAddingConnectRoute()
     {
-        $route = $this->addRoute(
+        $this->addRoute(
             $router = new Router(),
             'connect'
         );
@@ -98,7 +98,7 @@ class RoutingTest extends TestCase
 
     public function testAddingOptionsRoute()
     {
-        $route = $this->addRoute(
+        $this->addRoute(
             $router = new Router(),
             'options'
         );
@@ -106,7 +106,7 @@ class RoutingTest extends TestCase
 
     public function testAddingTraceRoute()
     {
-        $route = $this->addRoute(
+        $this->addRoute(
             $router = new Router(),
             'trace'
         );
@@ -114,7 +114,7 @@ class RoutingTest extends TestCase
 
     public function testAddingAnyRoute()
     {
-        $route = $this->addRoute(
+        $this->addRoute(
             $router = new Router(),
             'any',
             ['get', 'post', 'put', 'patch', 'delete', 'head', 'connect', 'options', 'trace']
@@ -123,7 +123,7 @@ class RoutingTest extends TestCase
 
     public function testRouteMatches()
     {
-        $route = $this->addRoute(
+        $this->addRoute(
             $router = new Router(),
             'get'
         );
