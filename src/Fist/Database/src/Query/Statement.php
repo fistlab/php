@@ -22,6 +22,13 @@ class Statement
     protected $bindings;
 
     /**
+     * The PDO instance.
+     *
+     * @var \PDO
+     */
+    protected $pdo;
+
+    /**
      * Statement constructor.
      *
      * @param \PDO          $pdo

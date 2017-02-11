@@ -1,10 +1,10 @@
 <?php
 
+use Fist\Testing\TestCase;
 use Fist\Container\Container;
 use Fist\Repository\ArrayRepository;
 use Fist\Repository\ContainerRepository;
 use Fist\Repository\RepositoryInterface;
-use Fist\Testing\TestCase;
 
 class RepositoryTest extends TestCase
 {
@@ -26,8 +26,8 @@ class RepositoryTest extends TestCase
     public function testArrayRepositoryGetter()
     {
         $array = [
-            'foo'    => 'bar',
-            'bar'    => 'baz',
+            'foo' => 'bar',
+            'bar' => 'baz',
             'foobar' => [
                 'foo' => 'bar',
             ],
@@ -45,8 +45,8 @@ class RepositoryTest extends TestCase
     public function testArrayRepositorySetter()
     {
         $array = [
-            'foo'    => 'bar',
-            'bar'    => 'baz',
+            'foo' => 'bar',
+            'bar' => 'baz',
             'foobar' => [
                 'foo' => 'bar',
             ],

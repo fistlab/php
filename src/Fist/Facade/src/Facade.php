@@ -13,7 +13,7 @@ abstract class Facade implements FacadeInterface
     {
         $instance = static::getFacadeInstance();
 
-        if (!method_exists($instance, $method)) {
+        if (! method_exists($instance, $method)) {
             throw new InvalidArgumentException("Method [{$method}] does not exists.");
         }
 

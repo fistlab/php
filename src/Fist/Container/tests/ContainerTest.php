@@ -1,7 +1,7 @@
 <?php
 
-use Fist\Container\Container;
 use Fist\Testing\TestCase;
+use Fist\Container\Container;
 
 class ContainerTest extends TestCase
 {
@@ -275,7 +275,7 @@ class ContainerTest extends TestCase
 
         $value = $container->make(ContainerMixedPrimitiveTestStub::class, [
             'first' => 'mark',
-            'last'  => 'topper',
+            'last' => 'topper',
         ]);
 
         $this->assertInstanceOf(ContainerMixedPrimitiveTestStub::class, $value);

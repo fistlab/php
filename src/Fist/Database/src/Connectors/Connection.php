@@ -2,10 +2,10 @@
 
 namespace Fist\Database\Connectors;
 
-use Fist\Database\Query\Builder as QueryBuilder;
+use PDOStatement;
 use Fist\Database\Query\Statement;
 use Fist\Repository\RepositoryInterface;
-use PDOStatement;
+use Fist\Database\Query\Builder as QueryBuilder;
 
 abstract class Connection implements ConnectionInterface
 {
@@ -20,7 +20,7 @@ abstract class Connection implements ConnectionInterface
 
     public function __construct(RepositoryInterface $repository = null)
     {
-        if (!is_null($repository)) {
+        if (! is_null($repository)) {
             $this->configure($repository);
         }
     }

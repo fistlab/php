@@ -68,9 +68,9 @@ class Builder
         }
 
         $this->where[] = [
-            'column'     => $column,
-            'operator'   => $operator,
-            'value'      => $value,
+            'column' => $column,
+            'operator' => $operator,
+            'value' => $value,
             'aggregator' => 'AND',
         ];
 
@@ -86,9 +86,9 @@ class Builder
         }
 
         $this->where[] = [
-            'column'     => $column,
-            'operator'   => $operator,
-            'value'      => $value,
+            'column' => $column,
+            'operator' => $operator,
+            'value' => $value,
             'aggregator' => 'OR',
         ];
 
@@ -98,9 +98,9 @@ class Builder
     public function orderBy($column, $direction = 'ASC')
     {
         $this->orders[] = [
-            'column'    => $column,
+            'column' => $column,
             'direction' => $direction,
-            'random'    => false,
+            'random' => false,
         ];
 
         return $this;
@@ -122,7 +122,7 @@ class Builder
         return $this;
     }
 
-    public function innerJoin($table, $key, $operator, $foreign = null)
+    protected function makeJoin($type, $table, $key, $operator, $foreign)
     {
         if (is_null($foreign)) {
             $foreign = $operator;
@@ -131,71 +131,34 @@ class Builder
         }
 
         $this->joins[] = [
-            'type'     => 'INNER',
-            'table'    => $table,
-            'key'      => $key,
-            'foreign'  => $foreign,
+            'type' => $type,
+            'table' => $table,
+            'key' => $key,
+            'foreign' => $foreign,
             'operator' => $operator,
         ];
 
         return $this;
+    }
+
+    public function innerJoin($table, $key, $operator, $foreign = null)
+    {
+        return $this->makeJoin('INNER', $table, $key, $operator, $foreign);
     }
 
     public function rightJoin($table, $key, $operator, $foreign = null)
     {
-        if (is_null($foreign)) {
-            $foreign = $operator;
-
-            $operator = '=';
-        }
-
-        $this->joins[] = [
-            'type'     => 'RIGHT',
-            'table'    => $table,
-            'key'      => $key,
-            'foreign'  => $foreign,
-            'operator' => $operator,
-        ];
-
-        return $this;
+        return $this->makeJoin('RIGHT', $table, $key, $operator, $foreign);
     }
 
     public function leftJoin($table, $key, $operator, $foreign = null)
     {
-        if (is_null($foreign)) {
-            $foreign = $operator;
-
-            $operator = '=';
-        }
-
-        $this->joins[] = [
-            'type'     => 'LEFT',
-            'table'    => $table,
-            'key'      => $key,
-            'foreign'  => $foreign,
-            'operator' => $operator,
-        ];
-
-        return $this;
+        return $this->makeJoin('LEFT', $table, $key, $operator, $foreign);
     }
 
     public function outerJoin($table, $key, $operator, $foreign = null)
     {
-        if (is_null($foreign)) {
-            $foreign = $operator;
-
-            $operator = '=';
-        }
-
-        $this->joins[] = [
-            'type'     => 'OUTER',
-            'table'    => $table,
-            'key'      => $key,
-            'foreign'  => $foreign,
-            'operator' => $operator,
-        ];
-
-        return $this;
+        return $this->makeJoin('OUTER', $table, $key, $operator, $foreign);
     }
 
     public function truncate()
