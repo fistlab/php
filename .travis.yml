@@ -19,6 +19,7 @@ matrix:
 sudo: false
 
 before_install:
+  - pip install --user codecov
   - if [[ $TRAVIS_PHP_VERSION != 7.1 ]] ; then phpenv config-rm xdebug.ini; fi
   - travis_retry composer self-update
 
@@ -31,3 +32,6 @@ script: vendor/bin/phpunit
 
 matrix:
   fast_finish: true
+
+after_success:
+  - codecov
