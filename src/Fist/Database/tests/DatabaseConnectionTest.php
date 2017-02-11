@@ -402,6 +402,17 @@ class DatabaseConnectionTest extends TestCase
         );
     }
 
+    public function testOverwritingRepository()
+    {
+        $db = $this->prepareDatabase();
+
+        $this->assertInstanceOf(ContainerRepository::class, $db->getRepository());
+
+        $db->setRepository(new ArrayRepository([]));
+
+        $this->assertInstanceOf(ArrayRepository::class, $db->getRepository());
+    }
+
     protected function prepareDatabase()
     {
         $db = new Database(
