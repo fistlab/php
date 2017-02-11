@@ -71,12 +71,20 @@ class Router
 
     protected function prepareQueryString($uri)
     {
+        return rawurldecode(
+            $this->stripQueryString($uri)
+        );
+    }
+
+    protected function stripQueryString($uri)
+    {
         // Strip query string (?foo=bar) and decode URI
-        if (false !== $pos = strpos($uri, '?')) {
-            $uri = substr($uri, 0, $uri);
+        $pos = strpos($uri, '?');
+        if ($pos !== false) {
+            return substr($uri, 0, $pos);
         }
 
-        return rawurldecode($uri);
+        return $uri;
     }
 
     public function dispatch($method = null, $uri = null)
