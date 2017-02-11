@@ -2,9 +2,9 @@
 
 namespace Fist\Database\Connectors;
 
-use Fist\Database\Query\Grammars\MysqlGrammar;
-use Fist\Repository\RepositoryInterface;
 use PDO;
+use Fist\Repository\RepositoryInterface;
+use Fist\Database\Query\Grammars\MysqlGrammar;
 
 class MysqlConnection extends Connection
 {

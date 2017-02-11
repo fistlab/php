@@ -2,8 +2,8 @@
 
 namespace Fist\Database\Query\Grammars;
 
-use Fist\Database\DatabaseException;
 use Fist\Database\Query\Builder;
+use Fist\Database\DatabaseException;
 
 abstract class Grammar implements GrammarInterface
 {
@@ -27,7 +27,7 @@ abstract class Grammar implements GrammarInterface
             throw new DatabaseException('Missing aggregator.');
         }
 
-        if (!in_array($aggregator, $this->aggregators)) {
+        if (! in_array($aggregator, $this->aggregators)) {
             throw new DatabaseException("Invalid aggregator [{$aggregator}].");
         }
 
@@ -50,12 +50,12 @@ abstract class Grammar implements GrammarInterface
         foreach ($this->getAggregatorComponents($aggregator) as $component) {
             $method = 'compile'.ucfirst($component).'ComponentFor'.ucfirst($aggregator).'Aggregator';
 
-            if (!method_exists($this, $method)) {
+            if (! method_exists($this, $method)) {
                 $method = 'compile'.ucfirst($component).'Component';
             }
 
             if ($content = $this->$method($builder, $aggregator)) {
-                if (!is_array($content)) {
+                if (! is_array($content)) {
                     $content = [$content, true];
                 }
 

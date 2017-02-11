@@ -68,9 +68,9 @@ class Builder
         }
 
         $this->where[] = [
-            'column'     => $column,
-            'operator'   => $operator,
-            'value'      => $value,
+            'column' => $column,
+            'operator' => $operator,
+            'value' => $value,
             'aggregator' => 'AND',
         ];
 
@@ -86,9 +86,9 @@ class Builder
         }
 
         $this->where[] = [
-            'column'     => $column,
-            'operator'   => $operator,
-            'value'      => $value,
+            'column' => $column,
+            'operator' => $operator,
+            'value' => $value,
             'aggregator' => 'OR',
         ];
 
@@ -98,9 +98,9 @@ class Builder
     public function orderBy($column, $direction = 'ASC')
     {
         $this->orders[] = [
-            'column'    => $column,
+            'column' => $column,
             'direction' => $direction,
-            'random'    => false,
+            'random' => false,
         ];
 
         return $this;
@@ -131,10 +131,10 @@ class Builder
         }
 
         $this->joins[] = [
-            'type'     => $type,
-            'table'    => $table,
-            'key'      => $key,
-            'foreign'  => $foreign,
+            'type' => $type,
+            'table' => $table,
+            'key' => $key,
+            'foreign' => $foreign,
             'operator' => $operator,
         ];
 
