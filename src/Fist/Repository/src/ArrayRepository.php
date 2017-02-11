@@ -18,7 +18,7 @@ class ArrayRepository implements RepositoryInterface
     public function get($key, $default = null)
     {
         if ($this->has($key)) {
-            if (!is_null($this->separator)) {
+            if (! is_null($this->separator)) {
                 return $this->getSeparated($key, $this->items);
             }
 
@@ -30,7 +30,7 @@ class ArrayRepository implements RepositoryInterface
 
     public function set($key, $value)
     {
-        if (!is_null($this->separator)) {
+        if (! is_null($this->separator)) {
             $this->setSeparated($key, $value, $this->items);
         } else {
             $this->items[$key] = $value;
@@ -39,7 +39,7 @@ class ArrayRepository implements RepositoryInterface
 
     public function has($key)
     {
-        if (!is_null($this->separator)) {
+        if (! is_null($this->separator)) {
             return $this->hasSeparated($key, $this->items);
         }
 
@@ -70,7 +70,7 @@ class ArrayRepository implements RepositoryInterface
             return $items[$part] = $value;
         }
 
-        if (!isset($items[$part]) || !is_array($items[$part])) {
+        if (! isset($items[$part]) || ! is_array($items[$part])) {
             $items[$part] = [];
         }
 
@@ -86,7 +86,7 @@ class ArrayRepository implements RepositoryInterface
         $parts = explode($this->separator, $key);
         $part = array_shift($parts);
 
-        if (!isset($items[$part]) || count($parts) == 0) {
+        if (! isset($items[$part]) || count($parts) == 0) {
             return isset($items[$part]);
         }
 

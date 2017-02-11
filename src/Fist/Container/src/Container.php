@@ -3,11 +3,11 @@
 namespace Fist\Container;
 
 use Closure;
-use InvalidArgumentException;
 use ReflectionClass;
-use ReflectionFunction;
 use ReflectionMethod;
+use ReflectionFunction;
 use ReflectionParameter;
+use InvalidArgumentException;
 
 class Container
 {
@@ -44,7 +44,7 @@ class Container
 
     public function resolving($name, Closure $closure)
     {
-        if (!isset($this->resolvingListeners[$name])) {
+        if (! isset($this->resolvingListeners[$name])) {
             $this->resolvingListeners[$name] = [];
         }
 
@@ -59,7 +59,7 @@ class Container
 
         $this->bindings[$name] = [
             'concrete' => $closure,
-            'shared'   => $shared,
+            'shared' => $shared,
         ];
 
         if ($bound) {
@@ -159,7 +159,7 @@ class Container
     {
         $name = $this->normalize($name);
 
-        if (!isset($this->rebindingListeners[$name])) {
+        if (! isset($this->rebindingListeners[$name])) {
             $this->rebindingListeners[$name] = [];
         }
 
@@ -172,7 +172,7 @@ class Container
         $needs = $this->normalize($needs);
         $give = $this->normalize($give);
 
-        if (!isset($this->contextual[$name])) {
+        if (! isset($this->contextual[$name])) {
             $this->contextual[$name] = [];
         }
 
@@ -203,7 +203,7 @@ class Container
 
     protected function getConcrete($name)
     {
-        if (!is_null($concrete = $this->getContextualConcrete($name))) {
+        if (! is_null($concrete = $this->getContextualConcrete($name))) {
             return $concrete;
         }
 
@@ -278,8 +278,8 @@ class Container
 
         $reflector = new ReflectionClass($concrete);
 
-        if (!$reflector->isInstantiable()) {
-            if (!empty($this->buildStack)) {
+        if (! $reflector->isInstantiable()) {
+            if (! empty($this->buildStack)) {
                 $previous = implode(', ', $this->buildStack);
 
                 $message = "Target [$concrete] is not instantiable while building [$previous].";
@@ -336,7 +336,7 @@ class Container
 
     protected function resolveNonClass(ReflectionParameter $parameter)
     {
-        if (!is_null($concrete = $this->getContextualConcrete('$'.$parameter->name))) {
+        if (! is_null($concrete = $this->getContextualConcrete('$'.$parameter->name))) {
             if ($concrete instanceof Closure) {
                 return call_user_func($concrete, $this);
             } else {

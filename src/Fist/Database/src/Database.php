@@ -3,9 +3,9 @@
 namespace Fist\Database;
 
 use Closure;
-use Fist\Database\Connectors\ConnectionInterface;
 use Fist\Repository\ArrayRepository;
 use Fist\Repository\RepositoryInterface;
+use Fist\Database\Connectors\ConnectionInterface;
 
 class Database
 {
@@ -203,7 +203,7 @@ class Database
 
     protected function setConnectedDriver($driverName, $connectionName, ConnectionInterface $connection)
     {
-        if (!isset($this->connectedDrivers[$driverName])) {
+        if (! isset($this->connectedDrivers[$driverName])) {
             $this->connectedDrivers[$driverName] = [];
         }
 

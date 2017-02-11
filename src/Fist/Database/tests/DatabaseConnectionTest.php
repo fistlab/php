@@ -1,17 +1,17 @@
 <?php
 
-use Fist\Container\Container;
-use Fist\Database\Connectors\ConnectionInterface;
-use Fist\Database\Connectors\MysqlConnection;
-use Fist\Database\Connectors\SqliteConnection;
+use Fist\Testing\TestCase;
 use Fist\Database\Database;
-use Fist\Database\DatabaseException;
+use Fist\Container\Container;
+use Fist\Testing\WithDatabase;
 use Fist\Database\Query\Statement;
+use Fist\Database\DatabaseException;
 use Fist\Repository\ArrayRepository;
 use Fist\Repository\ContainerRepository;
 use Fist\Repository\RepositoryInterface;
-use Fist\Testing\TestCase;
-use Fist\Testing\WithDatabase;
+use Fist\Database\Connectors\MysqlConnection;
+use Fist\Database\Connectors\SqliteConnection;
+use Fist\Database\Connectors\ConnectionInterface;
 
 class DatabaseConnectionTest extends TestCase
 {
@@ -19,21 +19,21 @@ class DatabaseConnectionTest extends TestCase
 
     protected $testConnections = [
         'mysql' => [
-            'driver'   => 'mysql',
+            'driver' => 'mysql',
             'database' => 'database',
             'hostname' => 'localhost',
             'username' => '',
             'password' => '',
         ],
         'sqlite' => [
-            'driver'   => 'sqlite',
+            'driver' => 'sqlite',
             'database' => ':memory:', // in-memory
             'hostname' => 'localhost',
             'username' => '',
             'password' => '',
         ],
         'tmp' => [
-            'driver'   => 'sqlite',
+            'driver' => 'sqlite',
             'database' => '', // temporary
             'hostname' => 'localhost',
             'username' => '',
@@ -198,7 +198,7 @@ class DatabaseConnectionTest extends TestCase
 
         // Change from in-memory to temporary database
         $db->setConnection('sqlite', [
-            'driver'   => 'sqlite',
+            'driver' => 'sqlite',
             'database' => '',
         ]);
 
