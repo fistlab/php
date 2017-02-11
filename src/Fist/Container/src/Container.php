@@ -348,7 +348,7 @@ class Container
             return $parameter->getDefaultValue();
         }
 
-        $message = "Unresolvable dependency resolving [$parameter] in class {$parameter->getDeclaringClass()->getName()}";
+        $message = "Unresolvable dependency resolving [$parameter] in class {$parameter->getDeclaringClass()->name}";
 
         throw new BindingException($message);
     }
