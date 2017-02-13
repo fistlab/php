@@ -137,7 +137,8 @@ class DatabaseConnectionTest extends TestCase
     {
         $db = new Database(
             new ContainerRepository(
-                new Container(), 'db.'
+                new Container(),
+                'db.'
             )
         );
 
@@ -165,7 +166,8 @@ class DatabaseConnectionTest extends TestCase
     {
         $db = new Database(
             $repository = new ContainerRepository(
-                new Container(), 'db.'
+                new Container(),
+                'db.'
             )
         );
 
@@ -424,8 +426,9 @@ class DatabaseConnectionTest extends TestCase
     protected function prepareDatabase()
     {
         $db = new Database(
-            $repository = new ContainerRepository(
-                new Container(), 'db.'
+            new ContainerRepository(
+                new Container(),
+                'db.'
             )
         );
 
