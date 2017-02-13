@@ -43,7 +43,7 @@ class RoutingTest extends TestCase
     public function testAddingGetRoute()
     {
         $this->addRoute(
-            $router = new Router(),
+            new Router(),
             'get'
         );
     }
@@ -51,7 +51,7 @@ class RoutingTest extends TestCase
     public function testAddingPostRoute()
     {
         $this->addRoute(
-            $router = new Router(),
+            new Router(),
             'post'
         );
     }
@@ -59,7 +59,7 @@ class RoutingTest extends TestCase
     public function testAddingPutRoute()
     {
         $this->addRoute(
-            $router = new Router(),
+            new Router(),
             'put'
         );
     }
@@ -74,8 +74,8 @@ class RoutingTest extends TestCase
 
     public function testAddingDeleteRoute()
     {
-        $route = $this->addRoute(
-            $router = new Router(),
+        $this->addRoute(
+            new Router(),
             'delete'
         );
     }
@@ -83,7 +83,7 @@ class RoutingTest extends TestCase
     public function testAddingHeadRoute()
     {
         $this->addRoute(
-            $router = new Router(),
+            new Router(),
             'head'
         );
     }
@@ -91,7 +91,7 @@ class RoutingTest extends TestCase
     public function testAddingConnectRoute()
     {
         $this->addRoute(
-            $router = new Router(),
+            new Router(),
             'connect'
         );
     }
@@ -99,7 +99,7 @@ class RoutingTest extends TestCase
     public function testAddingOptionsRoute()
     {
         $this->addRoute(
-            $router = new Router(),
+            new Router(),
             'options'
         );
     }
@@ -107,7 +107,7 @@ class RoutingTest extends TestCase
     public function testAddingTraceRoute()
     {
         $this->addRoute(
-            $router = new Router(),
+            new Router(),
             'trace'
         );
     }
@@ -115,7 +115,7 @@ class RoutingTest extends TestCase
     public function testAddingAnyRoute()
     {
         $this->addRoute(
-            $router = new Router(),
+            new Router(),
             'any',
             ['get', 'post', 'put', 'patch', 'delete', 'head', 'connect', 'options', 'trace']
         );
