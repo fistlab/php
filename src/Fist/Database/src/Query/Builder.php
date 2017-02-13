@@ -59,7 +59,7 @@ class Builder
         return $this;
     }
 
-    public function where($column, $operator, $value = null)
+    protected function makeWhere($aggregator, $column, $operator, $value = null)
     {
         if (is_null($value)) {
             $value = $operator;
@@ -71,28 +71,20 @@ class Builder
             'column' => $column,
             'operator' => $operator,
             'value' => $value,
-            'aggregator' => 'AND',
+            'aggregator' => $aggregator,
         ];
 
         return $this;
     }
 
+    public function where($column, $operator, $value = null)
+    {
+        return $this->makeWhere('AND', $column, $operator, $value);
+    }
+
     public function orWhere($column, $operator, $value = null)
     {
-        if (is_null($value)) {
-            $value = $operator;
-
-            $operator = '=';
-        }
-
-        $this->where[] = [
-            'column' => $column,
-            'operator' => $operator,
-            'value' => $value,
-            'aggregator' => 'OR',
-        ];
-
-        return $this;
+        return $this->makeWhere('OR', $column, $operator, $value);
     }
 
     public function orderBy($column, $direction = 'ASC')
