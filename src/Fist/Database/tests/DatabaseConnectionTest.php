@@ -55,7 +55,7 @@ class DatabaseConnectionTest extends TestCase
     {
         $db = new Database(
             new ContainerRepository(
-                $container = new Container()
+                new Container()
             )
         );
 
@@ -136,7 +136,9 @@ class DatabaseConnectionTest extends TestCase
     public function testDriverConnectionAreShared()
     {
         $db = new Database(
-            $repository = new ContainerRepository($container = new Container(), 'db.')
+            new ContainerRepository(
+                new Container(), 'db.'
+            )
         );
 
         $this->setDatabaseConnectionsAndDrivers($db);
@@ -162,13 +164,17 @@ class DatabaseConnectionTest extends TestCase
     public function testDriverSwapping()
     {
         $db = new Database(
-            $repository = new ContainerRepository($container = new Container(), 'db.')
+            $repository = new ContainerRepository(
+                new Container(), 'db.'
+            )
         );
 
         $this->setDatabaseConnectionsAndDrivers($db);
         $db->setDefaultConnection('sqlite');
 
+        // Test getting default connection
         $connection = $db->connection();
+        $this->assertInstanceOf(SqliteConnection::class, $connection);
 
         // Change from in-memory to temporary database
         $db->setConnection('sqlite', [
@@ -188,7 +194,9 @@ class DatabaseConnectionTest extends TestCase
     public function testSharedDriverConnectionsUpdateSettings()
     {
         $db = new Database(
-            $repository = new ContainerRepository($container = new Container(), 'db.')
+            $repository = new ContainerRepository(
+                new Container(), 'db.'
+            )
         );
 
         $this->setDatabaseConnectionsAndDrivers($db);
@@ -416,7 +424,9 @@ class DatabaseConnectionTest extends TestCase
     protected function prepareDatabase()
     {
         $db = new Database(
-            $repository = new ContainerRepository($container = new Container(), 'db.')
+            $repository = new ContainerRepository(
+                new Container(), 'db.'
+            )
         );
 
         $this->setDatabaseConnectionsAndDrivers($db);

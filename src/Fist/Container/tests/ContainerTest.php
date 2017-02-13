@@ -378,7 +378,7 @@ class ContainerTest extends TestCase
     {
         $container = new Container();
 
-        $result = $container->call(ContainerTestCallStub::class);
+        $container->call(ContainerTestCallStub::class);
     }
 
     public function testCallWithAtSignBasedClassReferences()
@@ -636,10 +636,12 @@ class ContainerStaticMethodStub
 
 class ContainerInjectVariableStub
 {
+    public $concrete;
     public $something;
 
     public function __construct(ContainerTestStub $concrete, $something)
     {
+        $this->concrete = $concrete;
         $this->something = $something;
     }
 }
