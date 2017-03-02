@@ -241,8 +241,8 @@ class DatabaseConnectionTest extends TestCase
         $statement = $db->raw('SELECT * FROM items WHERE name = ? OR name = ?', ['foo', 1]);
 
         $this->assertInstanceOf(Statement::class, $statement);
-        $this->assertEquals('SELECT * FROM items WHERE name = ? OR name = ?', $statement->toSql());
-        $this->assertEquals("SELECT * FROM items WHERE name = 'foo' OR name = 1", $statement->toSqlWithBindings());
+        $this->assertEquals('SELECT * FROM items WHERE name = ? OR name = ?', $statement->toSqlWithoutBindings());
+        $this->assertEquals("SELECT * FROM items WHERE name = 'foo' OR name = 1", $statement->toSql());
 
         $results = $statement->execute();
 
@@ -421,6 +421,16 @@ class DatabaseConnectionTest extends TestCase
         $db->setRepository(new ArrayRepository([]));
 
         $this->assertInstanceOf(ArrayRepository::class, $db->getRepository());
+    }
+
+    public function testWhereStatements()
+    {
+        $db = $this->prepareDatabase();
+
+        $this->assertEquals(
+            'SELECT * FROM `table` WHERE `foo` = "bar" AND `bar` = "baz"',
+            $db->table('table')->where('foo', 'bar')->where('bar', 'baz')->toSql()
+        );
     }
 
     protected function prepareDatabase()

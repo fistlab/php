@@ -61,7 +61,7 @@ class Statement
      *
      * @return string
      */
-    public function toSql()
+    public function toSqlWithoutBindings()
     {
         return $this->statement->queryString;
     }
@@ -71,14 +71,14 @@ class Statement
      *
      * @return string
      */
-    public function toSqlWithBindings()
+    public function toSql()
     {
         return array_reduce(
             $this->bindings,
             function ($sql, $binding) {
                 return preg_replace('/\?/', $this->quote($binding), $sql, 1);
             },
-            $this->toSql()
+            $this->statement->queryString
         );
     }
 
