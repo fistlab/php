@@ -46,6 +46,11 @@ class ArrayRepository implements RepositoryInterface
         return isset($this->items[$key]);
     }
 
+    public function all()
+    {
+        return $this->items;
+    }
+
     protected function getSeparated($key, array &$items)
     {
         $parts = explode($this->separator, $key);
