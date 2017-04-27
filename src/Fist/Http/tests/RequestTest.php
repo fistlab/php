@@ -1,7 +1,7 @@
 <?php
 
-use Fist\Testing\TestCase;
 use Fist\Http\Request;
+use Fist\Testing\TestCase;
 
 class RequestTest extends TestCase
 {
@@ -113,31 +113,25 @@ class RequestTest extends TestCase
 
     public function testCheckingIfRequestMatchesPattern()
     {
-        
     }
 
     public function testCheckingIfRequestMatchesFullPattern()
     {
-        
     }
 
     public function testCehckingIfRequestIsResultOfPjax()
     {
-        
     }
 
     public function testGettingRequestSchema()
     {
-        
     }
 
     public function testGettingClientIp()
     {
-        
     }
 
     public function testGettingClientIps()
     {
-        
     }
 }
