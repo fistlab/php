@@ -4,55 +4,55 @@ namespace Fist\Http;
 
 class Request
 {
-	protected $server;
+    protected $server;
 
-	protected $baseUrl;
+    protected $baseUrl;
 
-	protected $path;
+    protected $path;
 
-	protected $requestUri;
+    protected $requestUri;
 
     public function __construct(array $query = [], array $request = [], array $cookies = [], array $files = [], array $server = [], $content = null)
     {
         $this->initialize($query, $request, $cookies, $files, $server, $content);
     }
 
-	public static function createFromGlobals()
-	{
-		return new static($_GET, $_POST, $_COOKIE, $_FILES, $_SERVER);
-	}
+    public static function createFromGlobals()
+    {
+        return new static($_GET, $_POST, $_COOKIE, $_FILES, $_SERVER);
+    }
 
-	public function initialize(array $query = [], array $request = [], array $cookies = [], array $files = [], array $server = [], $content = null)
-	{
+    public function initialize(array $query = [], array $request = [], array $cookies = [], array $files = [], array $server = [], $content = null)
+    {
         $this->query = new ParameterBag($query);
         $this->request = new ParameterBag($request);
         $this->cookies = new ParameterBag($cookies);
         $this->files = new FileBag($files);
-		$this->server = new ServerBag($server);
-		$this->cookies = new CookieBag($cookies);
-		$this->headers = new HeaderBag($this->server->getHeaders());
-	}
+        $this->server = new ServerBag($server);
+        $this->cookies = new CookieBag($cookies);
+        $this->headers = new HeaderBag($this->server->getHeaders());
+    }
 
-	public function getMethod()
-	{
-		return $this->server->get('REQUEST_METHOD', 'GET');
-	}
+    public function getMethod()
+    {
+        return $this->server->get('REQUEST_METHOD', 'GET');
+    }
 
-	public function setMethod($method)
-	{
-		$this->server->set('REQUEST_METHOD', $method);
+    public function setMethod($method)
+    {
+        $this->server->set('REQUEST_METHOD', $method);
 
-		return $this;
-	}
+        return $this;
+    }
 
-	public function getUrl()
-	{
-		if (null !== $queryString = $this->getQueryString()) {
+    public function getUrl()
+    {
+        if (null !== $queryString = $this->getQueryString()) {
             $queryString = '?'.$queryString;
         }
 
         return $this->getSchemaAndHttpHost().$this->getBaseUrl().$this->getPath().$queryString;
-	}
+    }
 
     public function getQueryString()
     {
@@ -68,42 +68,42 @@ class Request
 
     public function getSchemaAndHttpHost()
     {
-    	return implode('://', [
-    		$this->getSchema(),
-    		$this->getHttpHost()
-    	]);
+        return implode('://', [
+            $this->getSchema(),
+            $this->getHttpHost(),
+        ]);
     }
 
     public function getBaseUrl()
     {
-    	return $this->baseUrl;
+        return $this->baseUrl;
     }
 
     public function getSchema()
     {
-    	return $this->isSecure() ? 'https' : 'http';
+        return $this->isSecure() ? 'https' : 'http';
     }
 
     public function isSecure()
     {
-    	return $this->server->get('HTTPS') == 'on';
+        return $this->server->get('HTTPS') == 'on';
     }
 
     public function enableHttps()
     {
-    	return $this->setHttps('on');
+        return $this->setHttps('on');
     }
 
     public function disableHttps()
     {
-    	return $this->setHttps('off');
+        return $this->setHttps('off');
     }
 
     public function setHttps($https)
     {
-    	$this->server->set('HTTPS', $https);
+        $this->server->set('HTTPS', $https);
 
-    	return $this;
+        return $this;
     }
 
     public function getHttpHost()
@@ -120,31 +120,31 @@ class Request
 
     public function getHost()
     {
-    	return $this->server->get('SERVER_NAME', '');
+        return $this->server->get('SERVER_NAME', '');
     }
 
     public function setHost($host)
     {
-    	$this->server->set('SERVER_NAME', $host);
+        $this->server->set('SERVER_NAME', $host);
 
-    	return $this;
+        return $this;
     }
 
     public function getPort()
     {
-    	return $this->server->get('SERVER_PORT', 80);
+        return $this->server->get('SERVER_PORT', 80);
     }
 
     public function setPort($port)
     {
-    	$this->server->set('SERVER_PORT', $port);
+        $this->server->set('SERVER_PORT', $port);
 
-    	return $this;
+        return $this;
     }
 
     public function getPath()
     {
-    	if (is_null($this->path)) {
+        if (is_null($this->path)) {
             $this->path = $this->preparePath();
         }
 
@@ -153,16 +153,16 @@ class Request
 
     public function setPath($path)
     {
-    	$this->path = $path;
+        $this->path = $path;
 
-    	return $this;
+        return $this;
     }
 
     public function preparePath()
     {
-    	$baseUrl = $this->getBaseUrl();
+        $baseUrl = $this->getBaseUrl();
 
-    	if (is_null($requestUri = $this->getRequestUri())) {
+        if (is_null($requestUri = $this->getRequestUri())) {
             return '/';
         }
 
@@ -174,9 +174,9 @@ class Request
         $path = substr($requestUri, strlen($baseUrl));
 
         if (is_null($baseUrl)) {
-        	return $requestUri;
-        } else if (!$path) {
-        	return '/';
+            return $requestUri;
+        } elseif (! $path) {
+            return '/';
         }
 
         return $path;
@@ -193,21 +193,20 @@ class Request
 
     public function setRequestUri($requestUri)
     {
-    	$this->requestUri = $requestUri;
+        $this->requestUri = $requestUri;
 
-    	return $this;
+        return $this;
     }
 
     public function prepareRequestUri()
     {
-    	
         if ($this->headers->has('X_ORIGINAL_URL')) {
             // IIS with Microsoft Rewrite Module
             return $this->headers->get('X_ORIGINAL_URL');
         } elseif ($this->headers->has('X_REWRITE_URL')) {
             // IIS with ISAPI_Rewrite
             return $this->headers->get('X_REWRITE_URL');
-        } elseif ($this->server->get('IIS_WasUrlRewritten') == '1' && !empty($this->server->get('UNENCODED_URL'))) {
+        } elseif ($this->server->get('IIS_WasUrlRewritten') == '1' && ! empty($this->server->get('UNENCODED_URL'))) {
             // IIS7 with URL Rewrite: make sure we get the unencoded URL (double slash problem)
             return $this->server->get('UNENCODED_URL');
         } elseif ($this->server->has('REQUEST_URI')) {
@@ -224,7 +223,7 @@ class Request
             // IIS 5.0, PHP as CGI
             $requestUri = $this->server->get('ORIG_PATH_INFO');
 
-            if (!empty($queryString = $this->server->get('QUERY_STRING'))) {
+            if (! empty($queryString = $this->server->get('QUERY_STRING'))) {
                 return $requestUri.'?'.$queryString;
             }
 
@@ -236,21 +235,21 @@ class Request
 
     public function segments()
     {
-    	$requestUri = $this->getRequestUri();
+        $requestUri = $this->getRequestUri();
 
-    	// Remove leading slash
-    	if (substr($requestUri, 0, 1) == '/') {
-    		$requestUri = substr($requestUri, 1);
-    	}
+        // Remove leading slash
+        if (substr($requestUri, 0, 1) == '/') {
+            $requestUri = substr($requestUri, 1);
+        }
 
-    	return explode('/', $requestUri);
+        return explode('/', $requestUri);
     }
 
     public function segment($i)
     {
-    	$i--;
-    	$segments = $this->segments();
+        $i--;
+        $segments = $this->segments();
 
-    	return isset($segments[$i]) ? $segments[$i] : null;
+        return isset($segments[$i]) ? $segments[$i] : null;
     }
 }
