@@ -4,10 +4,10 @@ namespace Fist\Testing;
 
 use Closure;
 use Exception;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase as PHPUnitTestCase;
 use PHPUnit_Framework_AssertionFailedError;
 
-class TestCase extends PHPUnit_Framework_TestCase
+class TestCase extends PHPUnitTestCase
 {
     public function throwsException(Closure $closure, $class = null, $messages = null)
     {
