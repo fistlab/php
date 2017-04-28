@@ -4,6 +4,9 @@ use Fist\Routing\Route;
 use Fist\Routing\Router;
 use Fist\Testing\TestCase;
 
+/**
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
+ */
 class RoutingTest extends TestCase
 {
     public function testBuildingRouter()

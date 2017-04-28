@@ -5,6 +5,9 @@ use Fist\Testing\TestCase;
 use Fist\Container\Container;
 use Fist\Facade\ContainerFacade;
 
+/**
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
+ */
 class FacadeTest extends TestCase
 {
     public function testCallingFacade()
