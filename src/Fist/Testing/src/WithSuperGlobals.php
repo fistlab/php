@@ -2,9 +2,6 @@
 
 namespace Fist\Testing;
 
-use Closure;
-use Fist\Database\Database;
-
 trait WithSuperGlobals
 {
     protected function caseSuperGlobalKey($key)
