@@ -25,7 +25,7 @@ trait WithSuperGlobals
     /**
      * @SuppressWarnings(PHPMD.Superglobals)
      */
-    protected function hasGlobalServer($key, $default)
+    protected function hasGlobalServer($key)
     {
         $key = $this->caseSuperGlobalKey($key);
 
@@ -71,7 +71,7 @@ trait WithSuperGlobals
     /**
      * @SuppressWarnings(PHPMD.Superglobals)
      */
-    protected function hasGlobalQuery($key, $default)
+    protected function hasGlobalQuery($key)
     {
         $key = $this->caseSuperGlobalKey($key);
 
@@ -117,7 +117,7 @@ trait WithSuperGlobals
     /**
      * @SuppressWarnings(PHPMD.Superglobals)
      */
-    protected function hasGlobalParameter($key, $default)
+    protected function hasGlobalParameter($key)
     {
         $key = $this->caseSuperGlobalKey($key);
 
@@ -163,7 +163,7 @@ trait WithSuperGlobals
     /**
      * @SuppressWarnings(PHPMD.Superglobals)
      */
-    protected function hasGlobalCookie($key, $default)
+    protected function hasGlobalCookie($key)
     {
         $key = $this->caseSuperGlobalKey($key);
 
