@@ -6,6 +6,9 @@ use Fist\Http\Request;
 use Fist\Testing\TestCase;
 use Fist\Testing\WithSuperGlobals;
 
+/**
+ * @SuppressWarnings(PHPMD.ExcessivePublicCount)
+ */
 class RequestTest extends TestCase
 {
     use WithSuperGlobals;
