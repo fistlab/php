@@ -1,5 +1,7 @@
 <?php
 
+namespace FistTest;
+
 use Fist\Http\Request;
 use Fist\Testing\TestCase;
 
