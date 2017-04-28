@@ -17,6 +17,9 @@ class Request
         $this->initialize($query, $request, $cookies, $files, $server, $content);
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.Superglobals)
+     */
     public static function createFromGlobals()
     {
         return new static($_GET, $_POST, $_COOKIE, $_FILES, $_SERVER);

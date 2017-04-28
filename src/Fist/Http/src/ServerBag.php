@@ -16,9 +16,8 @@ class ServerBag extends AbstractBag
         foreach ($this->items as $key => $value) {
             if (0 === strpos($key, 'HTTP_')) {
                 $headers[substr($key, 5)] = $value;
-            }
-            // CONTENT_* are not prefixed with HTTP_
-            elseif (in_array($key, $contentHeaders)) {
+            } elseif (in_array($key, $contentHeaders)) {
+                // CONTENT_* are not prefixed with HTTP_
                 $headers[$key] = $value;
             }
         }
