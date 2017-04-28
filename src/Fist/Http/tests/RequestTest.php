@@ -4,9 +4,12 @@ namespace FistTest;
 
 use Fist\Http\Request;
 use Fist\Testing\TestCase;
+use Fist\Testing\WithSuperGlobals;
 
 class RequestTest extends TestCase
 {
+    use WithSuperGlobals;
+
     public function testBuildingInstance()
     {
         $request = new Request();
@@ -30,10 +33,10 @@ class RequestTest extends TestCase
 
     public function testGettingFakedRequestMethod()
     {
-        $_SERVER['REQUEST_METHOD'] = 'POST';
+        $this->setGlobalServer('REQUEST_METHOD', 'POST');
 
         $request = Request::createFromGlobals();
-        unset($_SERVER['REQUEST_METHOD']);
+        $this->unsetGlobalServer('REQUEST_METHOD');
 
         $this->assertEquals('POST', $request->getMethod());
     }
@@ -51,60 +54,60 @@ class RequestTest extends TestCase
 
     public function testGettingRequestUrl()
     {
-        $_SERVER['SERVER_NAME'] = 'foo.bar';
-        $_SERVER['HTTP_X_ORIGINAL_URL'] = '/baz';
+        $this->setGlobalServer('SERVER_NAME', 'foo.bar');
+        $this->setGlobalServer('HTTP_X_ORIGINAL_URL', '/baz');
 
         $request = Request::createFromGlobals();
-        unset($_SERVER['SERVER_NAME']);
-        unset($_SERVER['HTTP_X_ORIGINAL_URL']);
+        $this->unsetGlobalServer('SERVER_NAME');
+        $this->unsetGlobalServer('HTTP_X_ORIGINAL_URL');
 
         $this->assertEquals('http://foo.bar/baz', $request->getUrl());
     }
 
     public function testGettingRequestUrlWithQuery()
     {
-        $_SERVER['SERVER_NAME'] = 'foo.bar';
-        $_SERVER['HTTP_X_ORIGINAL_URL'] = '/baz';
-        $_SERVER['QUERY_STRING'] = 'foo=bar&bar=baz';
+        $this->setGlobalServer('SERVER_NAME', 'foo.bar');
+        $this->setGlobalServer('HTTP_X_ORIGINAL_URL', '/baz');
+        $this->setGlobalServer('QUERY_STRING', 'foo=bar&bar=baz');
 
         $request = Request::createFromGlobals();
-        unset($_SERVER['SERVER_NAME']);
-        unset($_SERVER['HTTP_X_ORIGINAL_URL']);
-        unset($_SERVER['QUERY_STRING']);
+        $this->unsetGlobalServer('SERVER_NAME');
+        $this->unsetGlobalServer('HTTP_X_ORIGINAL_URL');
+        $this->unsetGlobalServer('QUERY_STRING');
 
         $this->assertEquals('http://foo.bar/baz?foo=bar&bar=baz', $request->getUrl());
     }
 
     public function testGettingRequestPath()
     {
-        $_SERVER['SERVER_NAME'] = 'foo.bar';
-        $_SERVER['HTTP_X_ORIGINAL_URL'] = '/baz';
-        $_SERVER['QUERY_STRING'] = 'foo=bar&bar=baz';
+        $this->setGlobalServer('SERVER_NAME', 'foo.bar');
+        $this->setGlobalServer('HTTP_X_ORIGINAL_URL', '/baz');
+        $this->setGlobalServer('QUERY_STRING', 'foo=bar&bar=baz');
 
         $request = Request::createFromGlobals();
-        unset($_SERVER['SERVER_NAME']);
-        unset($_SERVER['HTTP_X_ORIGINAL_URL']);
-        unset($_SERVER['QUERY_STRING']);
+        $this->unsetGlobalServer('SERVER_NAME');
+        $this->unsetGlobalServer('HTTP_X_ORIGINAL_URL');
+        $this->unsetGlobalServer('QUERY_STRING');
 
         $this->assertEquals('/baz', $request->getPath());
     }
 
     public function testGettingRequestSegments()
     {
-        $_SERVER['HTTP_X_ORIGINAL_URL'] = '/foo/bar/baz';
+        $this->setGlobalServer('HTTP_X_ORIGINAL_URL', '/foo/bar/baz');
 
         $request = Request::createFromGlobals();
-        unset($_SERVER['HTTP_X_ORIGINAL_URL']);
+        $this->unsetGlobalServer('HTTP_X_ORIGINAL_URL');
 
         $this->assertEquals(['foo', 'bar', 'baz'], $request->segments());
     }
 
     public function testGettingRequestSegment()
     {
-        $_SERVER['HTTP_X_ORIGINAL_URL'] = '/foo/bar/baz';
+        $this->setGlobalServer('HTTP_X_ORIGINAL_URL', '/foo/bar/baz');
 
         $request = Request::createFromGlobals();
-        unset($_SERVER['HTTP_X_ORIGINAL_URL']);
+        $this->unsetGlobalServer('HTTP_X_ORIGINAL_URL');
 
         $this->assertNull($request->segment(0));
         $this->assertEquals('foo', $request->segment(1));
