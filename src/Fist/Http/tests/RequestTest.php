@@ -7,7 +7,7 @@ use Fist\Testing\TestCase;
 use Fist\Testing\WithSuperGlobals;
 
 /**
- * @SuppressWarnings(PHPMD.ExcessivePublicCount)
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
 class RequestTest extends TestCase
 {
