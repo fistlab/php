@@ -9,7 +9,7 @@ use Fist\Testing\WithSuperGlobals;
 /**
  * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
-class RequestTest extends TestCase
+class HttpRequestTest extends TestCase
 {
     use WithSuperGlobals;
 
@@ -121,25 +121,86 @@ class RequestTest extends TestCase
 
     public function testCheckingIfRequestMatchesPattern()
     {
+        $this->setGlobalServer('HTTP_X_ORIGINAL_URL', '/foo/bar/baz');
+
+        $request = Request::createFromGlobals();
+        $this->unsetGlobalServer('HTTP_X_ORIGINAL_URL');
+
+        $this->assertTrue($request->is('foo/*/*'));
+        $this->assertTrue($request->is('/foo/*/*'));
+        $this->assertTrue($request->is('/foo/bar/*'));
+        $this->assertTrue($request->is('/foo/bar/baz'));
+        $this->assertTrue($request->is('/*/bar/baz'));
+        $this->assertTrue($request->is('/*/*/baz'));
+        $this->assertTrue($request->is('/*/*/*'));
+        $this->assertTrue($request->is('/*/*+'));
+        $this->assertTrue($request->is('/*+'));
+        $this->assertFalse($request->is('/foo/*'));
+        $this->assertFalse($request->is('/bar/*/*'));
     }
 
-    public function testCheckingIfRequestMatchesFullPattern()
+    public function testCheckingIfRequestMatchesRegexPattern()
     {
+        $this->setGlobalServer('HTTP_X_ORIGINAL_URL', '/foo/bar/baz');
+
+        $request = Request::createFromGlobals();
+        $this->unsetGlobalServer('HTTP_X_ORIGINAL_URL');
+
+        $this->assertTrue($request->matches('/foo/{.+}'));
+        $this->assertFalse($request->matches('/bar/{.+}'));
     }
 
     public function testCehckingIfRequestIsResultOfPjax()
     {
+        $request = Request::createFromGlobals();
+
+        $this->assertFalse($request->isPjax());
+
+        $request->getHeaders()->set('X-PJAX', true);
+
+        $this->assertTrue($request->isPjax());
+    }
+
+    public function testCehckingIfRequestIsResultOfAjax()
+    {
+        $request = Request::createFromGlobals();
+
+        $this->assertFalse($request->isAjax());
+
+        // TODO: Set it to be AJAX
+
+        $this->assertTrue($request->isAjax());
     }
 
     public function testGettingRequestSchema()
     {
+        $request = Request::createFromGlobals();
+
+        $this->assertEquals('http', $request->getSchema());
+
+        $request->enableHttps();
+
+        $this->assertEquals('https', $request->getSchema());
     }
 
     public function testGettingClientIp()
     {
+        // TODO: Make this test
     }
 
     public function testGettingClientIps()
     {
+        // TODO: Make this test
+    }
+
+    public function testGettingFingerprint()
+    {
+        $request = Request::createFromGlobals();
+
+        $fingerprint = sha1(implode('|', array_merge(
+            $route->methods(), [$route->domain(), $route->uri(), $this->ip()]
+        )));
+
+        $this->assertEquals($fingerprint, $request->getFingerprint());
     }
 }

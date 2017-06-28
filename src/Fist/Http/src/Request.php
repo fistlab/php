@@ -255,4 +255,9 @@ class Request
 
         return isset($segments[$i]) ? $segments[$i] : null;
     }
+
+    public function isPjax()
+    {
+        return $this->headers->get('X-PJAX') == true;
+    }
 }
