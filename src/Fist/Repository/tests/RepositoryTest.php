@@ -6,6 +6,9 @@ use Fist\Repository\ArrayRepository;
 use Fist\Repository\ContainerRepository;
 use Fist\Repository\RepositoryInterface;
 
+/**
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
+ */
 class RepositoryTest extends TestCase
 {
     public function testRepositoryBuilding()

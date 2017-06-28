@@ -13,6 +13,9 @@ use Fist\Database\Connectors\MysqlConnection;
 use Fist\Database\Connectors\SqliteConnection;
 use Fist\Database\Connectors\ConnectionInterface;
 
+/**
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
+ */
 class DatabaseConnectionTest extends TestCase
 {
     use WithDatabase;

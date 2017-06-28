@@ -1,9 +1,9 @@
 {
-  "name": "fist/repository",
-  "description": "The Fistlab PHP Repository Components",
-  "keywords": ["fistlab", "fistphp", "component", "repository"],
+  "name": "fist/http",
+  "description": "The Fistlab PHP Container Components",
+  "keywords": ["fistlab", "fistphp", "component", "http"],
   "license": "MIT",
-  "homepage": "https://github.com/fistphp/repository",
+  "homepage": "https://github.com/fistphp/http",
   "support": {
     "issues": "https://github.com/fistlab/php/issues",
     "source": "https://github.com/fistlab/php"
@@ -19,21 +19,17 @@
   },
   "require-dev": {
     "phpunit/phpunit": "~6.0",
-    "fist/testing": "self.version",
-    "fist/container": "self.version"
+    "fist/testing": "self.version"
   },
   "autoload": {
     "psr-4": {
-      "Fist\\Repository\\": "src/"
+      "Fist\\Http\\": "src/"
     }
   },
   "extra": {
     "branch-alias": {
       "dev-master": "1.0-dev"
     }
-  },
-  "suggest": {
-    "fist/container": "Required for using ContainerRepository"
   },
   "minimum-stability": "dev"
 }

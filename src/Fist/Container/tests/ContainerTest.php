@@ -3,6 +3,9 @@
 use Fist\Testing\TestCase;
 use Fist\Container\Container;
 
+/**
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
+ */
 class ContainerTest extends TestCase
 {
     public function testContainerBuilding()
