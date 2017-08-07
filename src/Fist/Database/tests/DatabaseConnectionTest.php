@@ -206,16 +206,29 @@ class DatabaseConnectionTest extends TestCase
 
         $db->statement('CREATE TABLE items (name VARCHAR(50))');
 
+        // Ensure that table exists
+        $this->assertEquals([], $db->table('items')->get());
+
         // Change from in-memory to temporary database
         $db->setConnection('sqlite', [
             'driver' => 'sqlite',
             'database' => '',
         ]);
 
+        // Ensure that table does not exists on the new connection
+        $this->throwsException(function () use ($db) {
+            $db->table('items')->get();
+        }, PDOException::class, [
+            'SQLSTATE[HY000]: General error: 1 no such table: items',
+        ]);
+
         // The change should make sure that this does not fail,
         // even that it is the same driver and same connection,
         // but since the connection variable have been changed.
         $db->statement('CREATE TABLE items (name VARCHAR(50))');
+
+        // Ensure that table exists
+        $this->assertEquals([], $db->table('items')->get());
     }
 
     public function testRawQueries()
