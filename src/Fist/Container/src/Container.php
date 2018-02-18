@@ -32,7 +32,7 @@ class Container
         return static::$instance;
     }
 
-    public static function setInstance(Container $container)
+    public static function setInstance(self $container)
     {
         static::$instance = $container;
     }
