@@ -13,6 +13,7 @@
 [![Build Status](https://scrutinizer-ci.com/g/fistlab/php/badges/build.png?b=master)](https://scrutinizer-ci.com/g/fistlab/php/build-status/master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/17d30f51b41c432293de5ff2d4a75bf8)](https://www.codacy.com/app/marktopper/php?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fistlab/php&amp;utm_campaign=Badge_Grade)
 [![codecov](https://codecov.io/gh/fistlab/php/branch/master/graph/badge.svg)](https://codecov.io/gh/fistlab/php)
+[![Open Source Helpers](https://www.codetriage.com/fistlab/php/badges/users.svg)](https://www.codetriage.com/fistlab/php)
 
 ## Idea
 
